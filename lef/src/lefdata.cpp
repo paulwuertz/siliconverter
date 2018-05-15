@@ -239,6 +239,12 @@ namespace lef {
 			m_recentLayer->setPitch(i, j);
 	}
 
+	void LEFData::setLayerArea(double i)
+	{
+		if(m_recentLayer)
+			m_recentLayer->minArea = i;
+	}
+
 	vector<LEFLayerInfo*> LEFData::getLayers()
 	{
 		return m_layers;

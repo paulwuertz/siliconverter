@@ -17,6 +17,7 @@ public:
 	string getType();
 	pair<double,double> getPitch();
 
+	double minArea;
 private:
 	string m_name;
 	string m_type;

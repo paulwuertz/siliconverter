@@ -64,6 +64,7 @@ namespace lef {
 
 		void addLayer(std::string s);
 		void setLayerType(std::string s);
+		void setLayerArea(double);
 		void setLayerPitch(double, double);
 		vector<LEFLayerInfo*> getLayers();
 

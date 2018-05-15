@@ -62,6 +62,7 @@ USE					"USE"
 OVERHANG			"OVERHANG"
 METALOVERHANG		"METALOVERHANG"
 
+AREA				"AREA"
 SITE				"SITE"
 SYMMETRY			"SYMMETRY"
 CLASS				"CLASS"
@@ -133,6 +134,7 @@ MEGAHERTZ "MEGAHERTZ"
 {PORT}+						{ return lef::LEFParser::token::PORT; }
 {LIBRARY}+					{ return lef::LEFParser::token::LIBRARY; }
 
+{AREA}+ 		{return lef::LEFParser::token::AREA; }
 {PICOFARADS}+ 		{return lef::LEFParser::token::PICOFARADS; }
 {OHMS}+				{return lef::LEFParser::token::OHMS; }
 {MILLIWATTS}+				{return lef::LEFParser::token::MILLIWATTS; }

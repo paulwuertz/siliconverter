@@ -79,6 +79,7 @@
 %token PATH
 %token LIBRARY
 
+%token AREA
 %token PICOFARADS
 %token OHMS
 %token MILLIWATTS
@@ -165,20 +166,12 @@ LAYER STRING
 
 layer_options: layer_option | layer_options layer_option;
 layer_option:
-  TYPE STRING
-{
-	lefdata->setLayerType(*$2);
-}
+  TYPE STRING {	lefdata->setLayerType(*$2);}
 | SPACING DOUBLE;
 | DIRECTION STRING
-| PITCH DOUBLE DOUBLE
-{
-	lefdata->setLayerPitch($2,$3);
-}
-| PITCH DOUBLE
-{
-	lefdata->setLayerPitch($2,$2);
-}
+| AREA DOUBLE {	lefdata->setLayerArea($2);}
+| PITCH DOUBLE DOUBLE {	lefdata->setLayerPitch($2,$3);}
+| PITCH DOUBLE {	lefdata->setLayerPitch($2,$2);}
 | OFFSET DOUBLE
 | OFFSET INTEGER
 | WIDTH DOUBLE
