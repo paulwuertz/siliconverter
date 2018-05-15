@@ -79,6 +79,19 @@
 %token PATH
 %token LIBRARY
 
+%token PICOFARADS
+%token OHMS
+%token MILLIWATTS
+%token CURRENT
+%token MILLIAMPS
+%token VOLTAGE
+%token VOLTS
+%token TIME
+%token NANOSECONDS
+%token POWER
+%token FREQUENCY
+%token MEGAHERTZ
+
 %start lef_file
 
 %%
@@ -117,12 +130,22 @@ dividechar: DIVIDERCHAR STRING
 {
 	lefdata->setDivideChar(*$2);
 };
-units: UNITS database_list END UNITS;
+units: UNITS database_lists END UNITS;
+
+database_lists:
+	  database_list
+	| database_lists database_list
+	;
+
 database_list:
-DATABASE MICRONS INTEGER
-{
-	lefdata->setBaseUnitMicrons($3);
-}
+DATABASE MICRONS INTEGER { lefdata->units.databaseLEFconvertFactor = $3; }
+| CAPACITANCE PICOFARADS INTEGER {lefdata->units.capacitanceConvertFactor = $3;}
+| TIME NANOSECONDS INTEGER {lefdata->units.timeConvertFactor = $3;}
+| RESISTANCE OHMS INTEGER {lefdata->units.resistanceConvertFactor = $3;}
+| POWER MILLIWATTS INTEGER {lefdata->units.powerConvertFactor = $3;}
+| CURRENT MILLIAMPS INTEGER {lefdata->units.currentConvertFactor = $3;}
+| VOLTAGE VOLTS INTEGER {lefdata->units.voltageConvertFactor = $3;}
+| FREQUENCY MEGAHERTZ INTEGER {lefdata->units.frequencyConvertFactor = $3;}
 ;
 useminamespacing: USEMINSPACING OBS STRING | USEMINSPACING PIN STRING;
 clearensmeasure: CLEARANCEMEASURE STRING;

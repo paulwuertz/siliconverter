@@ -8,8 +8,6 @@ namespace lef {
 		parser(NULL),
 		trace_scanning(false),
 		trace_parsing(false),
-		baseUnitMicrons(false),
-		m_baseUnitMicronsValue(1),
 		m_recentLayer(NULL),
 		m_recentVia(NULL),
 		m_recentMacro(NULL)
@@ -214,13 +212,12 @@ namespace lef {
 
 	void LEFData::setBaseUnitMicrons(int i)
 	{
-		baseUnitMicrons = true;
-		m_baseUnitMicronsValue = i;
+		units.databaseLEFconvertFactor = i;
 	}
 
 	int LEFData::getBaseUnits()
 	{
-		return m_baseUnitMicronsValue;
+		return units.databaseLEFconvertFactor;
 	}
 
 	void LEFData::setLayerType(std::string s)

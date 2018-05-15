@@ -39,6 +39,7 @@ DATABASE			"DATABASE"
 MICRONS				"MICRONS"
 USEMINSPACING		"USEMINSPACING"
 OBS					"OBS"
+PICOFARADS "PICOFARADS"
 PIN					"PIN"
 CLEARANCEMEASURE	"CLEARANCEMEASURE"
 MANUFACTURINGGRID	"MANUFACTURINGGRID"
@@ -72,6 +73,18 @@ SHAPE				"SHAPE"
 PORT				"PORT"
 PATH				"PATH"
 LIBRARY				"LIBRARY"
+
+OHMS "OHMS"
+MILLIWATTS "MILLIWATTS"
+CURRENT "CURRENT"
+MILLIAMPS "MILLIAMPS"
+VOLTAGE "VOLTAGE"
+VOLTS "VOLTS"
+TIME "TIME"
+NANOSECONDS "NANOSECONDS"
+POWER "POWER"
+FREQUENCY "FREQUENCY"
+MEGAHERTZ "MEGAHERTZ"
 
 %%
 
@@ -119,6 +132,19 @@ LIBRARY				"LIBRARY"
 {SHAPE}+					{ return lef::LEFParser::token::SHAPE; }
 {PORT}+						{ return lef::LEFParser::token::PORT; }
 {LIBRARY}+					{ return lef::LEFParser::token::LIBRARY; }
+
+{PICOFARADS}+ 		{return lef::LEFParser::token::PICOFARADS; }
+{OHMS}+				{return lef::LEFParser::token::OHMS; }
+{MILLIWATTS}+				{return lef::LEFParser::token::MILLIWATTS; }
+{CURRENT}+				{return lef::LEFParser::token::CURRENT; }
+{MILLIAMPS}+				{return lef::LEFParser::token::MILLIAMPS; }
+{VOLTAGE}+				{return lef::LEFParser::token::VOLTAGE; }
+{VOLTS}+				{return lef::LEFParser::token::VOLTS; }
+{TIME}		{return lef::LEFParser::token::TIME; }
+{NANOSECONDS}		{return lef::LEFParser::token::NANOSECONDS; }
+{POWER}		{return lef::LEFParser::token::POWER; }
+{FREQUENCY}		{return lef::LEFParser::token::FREQUENCY; }
+{MEGAHERTZ}		{return lef::LEFParser::token::MEGAHERTZ; }
 
 {INTEGER}* {
 	leflval->v_int = atoi(yytext);

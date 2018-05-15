@@ -14,6 +14,17 @@
 
 namespace lef {
 
+	struct LefUnits{
+		  unsigned int timeConvertFactor;
+		  unsigned int capacitanceConvertFactor;
+		  unsigned int resistanceConvertFactor;
+		  unsigned int powerConvertFactor;
+		  unsigned int currentConvertFactor;
+		  unsigned int voltageConvertFactor;
+		  unsigned int databaseLEFconvertFactor = 100;
+		  unsigned int frequencyConvertFactor;
+	};
+
 	class LEFScanner;
 	class LEFParser;
 	class LEFData
@@ -56,6 +67,7 @@ namespace lef {
 		void setLayerPitch(double);
 		vector<LEFLayerInfo*> getLayers();
 
+		LefUnits units;
 	private:
 		LEFScanner *lexer;
 		LEFParser* parser;
@@ -78,9 +90,6 @@ namespace lef {
 		string m_divideChar;
 
 		string recentMacroPinObstructionLayer;
-
-		bool baseUnitMicrons;
-		int m_baseUnitMicronsValue;
 	};
 }
 
