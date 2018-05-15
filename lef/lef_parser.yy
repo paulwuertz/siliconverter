@@ -171,13 +171,13 @@ layer_option:
 }
 | SPACING DOUBLE;
 | DIRECTION STRING
+| PITCH DOUBLE DOUBLE
+{
+	lefdata->setLayerPitch($2,$3);
+}
 | PITCH DOUBLE
 {
-	lefdata->setLayerPitch($2);
-}
-| PITCH INTEGER
-{
-	lefdata->setLayerPitch($2);
+	lefdata->setLayerPitch($2,$2);
 }
 | OFFSET DOUBLE
 | OFFSET INTEGER

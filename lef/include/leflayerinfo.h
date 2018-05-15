@@ -11,16 +11,16 @@ public:
 	LEFLayerInfo();
 	void setName(string s);
 	void setType(string s);
-	void setPitch(double i);
+	void setPitch(double i, double j);
 
 	string getName();
 	string getType();
-	double getPitch();
+	pair<double,double> getPitch();
 
 private:
 	string m_name;
 	string m_type;
-	double m_pitch;
+	double m_pitch_x, m_pitch_y;
 };
 
 #endif // LEFLAYERINFO_H

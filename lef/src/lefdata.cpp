@@ -233,10 +233,10 @@ namespace lef {
 		m_recentLayer->setName(s);
 	}
 
-	void LEFData::setLayerPitch(double i)
+	void LEFData::setLayerPitch(double i, double j)
 	{
 		if(m_recentLayer)
-			m_recentLayer->setPitch(i);
+			m_recentLayer->setPitch(i, j);
 	}
 
 	vector<LEFLayerInfo*> LEFData::getLayers()
